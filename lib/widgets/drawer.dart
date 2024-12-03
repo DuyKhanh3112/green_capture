@@ -49,9 +49,9 @@ class MainDrawer extends StatelessWidget {
                     },
                   ),
                   ListTile(
-                    leading: const Icon(Icons.camera),
+                    leading: const Icon(Icons.photo_camera_back_rounded),
                     title: const Text(
-                      'Picture',
+                      'Dự đoán hình ảnh',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 18,
@@ -65,9 +65,9 @@ class MainDrawer extends StatelessWidget {
                     },
                   ),
                   ListTile(
-                    leading: const Icon(Icons.wifi),
+                    leading: const Icon(Icons.add_a_photo),
                     title: const Text(
-                      'Green picture',
+                      'Quản lý hình ảnh',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 18,
@@ -82,9 +82,9 @@ class MainDrawer extends StatelessWidget {
                     },
                   ),
                   ListTile(
-                    leading: const Icon(Icons.image),
+                    leading: const Icon(Icons.add_photo_alternate_sharp),
                     title: const Text(
-                      'Quản lý hình ảnh',
+                      'Thêm dữ liệu',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 18,

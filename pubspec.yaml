@@ -10,8 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  get:
-  get_storage:
+  get: ^4.6.6
+  get_storage: ^2.1.1
 
   fluttertoast: ^8.2.6
   flutter_speed_dial: ^7.0.0

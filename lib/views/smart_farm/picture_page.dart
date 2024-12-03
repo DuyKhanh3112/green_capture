@@ -10,6 +10,7 @@ import 'package:green_capture/api/api_service.dart';
 import 'package:green_capture/config/app_colors.dart';
 import 'package:green_capture/controller/main_controller.dart';
 import 'package:green_capture/objs/image_detect.dart';
+import 'package:green_capture/utils/tool.dart';
 import 'package:green_capture/widgets/customWidget.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -57,29 +58,30 @@ class PicturePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [
+      body: ListView(children: [
         buildBtnPart(context),
         const Divider(),
-        Expanded(
-          child: Center(
-            child: Obx(() {
-              if (Get.find<MainController>().image.value.path != '') {
-                // if (Get.find<MainController>().listImageDetect.isEmpty) {
-                if (!Get.find<MainController>().clickDetect.value) {
-                  return buildResultPart();
-                }
-                return buildResultInfoPart();
+        Center(
+          child: Obx(() {
+            if (Get.find<MainController>().image.value.path != '') {
+              // if (Get.find<MainController>().listImageDetect.isEmpty) {
+              if (!Get.find<MainController>().clickDetect.value) {
+                return buildResultPart();
               }
-              return const Text('Vui lòng chọn ảnh hoặc chụp ảnh mới!');
-            }),
-          ),
+              return buildResultInfoPart();
+            }
+            return const Text('Vui lòng chọn ảnh hoặc chụp ảnh mới!');
+          }),
         ),
       ]),
     );
   }
 
-  SizedBox buildBtnPart(BuildContext context) => SizedBox(
-        height: Get.height * 0.25,
+  Widget buildBtnPart(BuildContext context) => Container(
+        // height: Get.height * 0.2,
+        margin: EdgeInsets.symmetric(
+          vertical: Get.height * 0.01,
+        ),
         child: Obx(() {
           return Column(
             mainAxisSize: MainAxisSize.min,
@@ -105,7 +107,7 @@ class PicturePage extends StatelessWidget {
                         },
                   title: 'Start Camera',
                   icon: Icons.camera_alt),
-              SizedBox(height: Get.height * 0.03),
+              SizedBox(height: Get.height * 0.02),
               CustomWidget.homeBtn(
                 onTap: Get.find<MainController>().detecting.value == true
                     ? () {}
@@ -119,12 +121,12 @@ class PicturePage extends StatelessWidget {
       );
 
   Widget buildResultPart() => Container(
-        height: Get.height * 0.72,
+        // height: Get.height * 0.72,
         // decoration: BoxDecoration(),
         margin: EdgeInsets.symmetric(
           horizontal: Get.width * 0.05,
         ),
-        child: ListView(
+        child: Column(
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
@@ -165,7 +167,7 @@ class PicturePage extends StatelessWidget {
       );
 
   Widget buildResultInfoPart() => Container(
-        height: Get.height * 0.72,
+        // height: Get.height * 0.72,
         // decoration: BoxDecoration(),
         margin: EdgeInsets.symmetric(
           horizontal: Get.width * 0.05,
@@ -181,7 +183,7 @@ class PicturePage extends StatelessWidget {
                   child: const Text(
                     'Hình ảnh Gốc',
                     style: TextStyle(
-                      fontSize: 24,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -198,8 +200,7 @@ class PicturePage extends StatelessWidget {
               ],
             ),
             const Divider(),
-            Expanded(
-                child: ListView(
+            Column(
               children: Get.find<MainController>().listImageDetect.map((item) {
                 return Column(
                   children: [
@@ -208,9 +209,9 @@ class PicturePage extends StatelessWidget {
                       alignment: Alignment.topCenter,
                       height: Get.height * 0.05,
                       child: Text(
-                        'Dự đoán: ${item.prediction}',
+                        'Dự đoán: ${Tool.getVietnamese(item.prediction)}',
                         style: const TextStyle(
-                          fontSize: 22,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
                           fontStyle: FontStyle.italic,
                         ),
@@ -283,7 +284,8 @@ class PicturePage extends StatelessWidget {
                   ],
                 );
               }).toList(),
-            )),
+            ),
+            const Divider(),
           ],
         ),
       );

@@ -12,6 +12,20 @@ class Tool {
   // ignore: non_constant_identifier_names
   static Color appBar_title = Colors.white;
 
+  static String getVietnamese(String name) {
+    if (name == 'HeoDay') {
+      return 'Héo dây';
+    }
+    if (name == 'ChayLa') {
+      return 'Cháy lá';
+    }
+    if (name == 'Kham') {
+      return 'Khảm';
+    }
+
+    return name;
+  }
+
   static String removeDiacritics(String str) {
     const vietnamese = 'aAeEoOuUiIdDyY';
     final vietnameseRegex = <RegExp>[

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -38,12 +39,19 @@ Future<String> postImage(String imageBytes, String fileName) async {
   // // Đọc phản hồi từ server
   // var responseData = await response.stream.bytesToString();
 
-  var responseData = await dio.post(
-    'http://172.16.105.167:1025//predict',
-    data: {
-      'image': imageBytes,
-      'filename': fileName,
-    },
-  );
-  return responseData.toString();
+  try {
+    var responseData = await dio.post(
+      'http://172.16.105.167:1025//predict',
+      data: {
+        'image': imageBytes,
+        'filename': fileName,
+      },
+    );
+    return responseData.toString();
+  } on Exception catch (e) {
+    // TODO
+    log('postImage error: $e');
+  }
+
+  return '';
 }

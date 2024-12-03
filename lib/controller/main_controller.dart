@@ -21,13 +21,13 @@ class MainController extends GetxController {
   List<Widget> pages = [
     const HomePage(),
     const PicturePage(),
-    const GreenCapturePage(),
     const ImageManagementScreen(),
+    const GreenCapturePage(),
   ];
   List<String> titles = [
     'Trang chủ',
-    'Picture',
-    'Green Capture',
+    'Dự đoán hình ảnh',
+    'Thêm dữ liệu',
     'Quản lý hình ảnh',
   ];
   RxInt numPage = 0.obs;
