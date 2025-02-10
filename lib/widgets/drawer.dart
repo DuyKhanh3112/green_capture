@@ -35,7 +35,7 @@ class MainDrawer extends StatelessWidget {
                   ListTile(
                     leading: const Icon(Icons.home),
                     title: const Text(
-                      'Home',
+                      'Trang chủ',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 18,
@@ -65,23 +65,6 @@ class MainDrawer extends StatelessWidget {
                     },
                   ),
                   ListTile(
-                    leading: const Icon(Icons.add_a_photo),
-                    title: const Text(
-                      'Quản lý hình ảnh',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    onTap: () async {
-                      Get.back();
-                      mainController.numPage.value = 2;
-                      // Get.toNamed('/home');
-                      // await greenCaptureController.loadData();
-                    },
-                  ),
-                  ListTile(
                     leading: const Icon(Icons.add_photo_alternate_sharp),
                     title: const Text(
                       'Thêm dữ liệu',
@@ -93,8 +76,25 @@ class MainDrawer extends StatelessWidget {
                     ),
                     onTap: () {
                       Get.back();
+                      mainController.numPage.value = 2;
+                      // Get.toNamed('/home');
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.add_a_photo),
+                    title: const Text(
+                      'Quản lý hình ảnh',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    onTap: () async {
+                      Get.back();
                       mainController.numPage.value = 3;
                       // Get.toNamed('/home');
+                      // await greenCaptureController.loadData();
                     },
                   ),
                 ],
